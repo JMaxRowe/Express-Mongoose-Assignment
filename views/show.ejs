@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -13,11 +18,11 @@
     <h2>Genre: <%=movie.genre%></h2>
     <%if(movie.rating === 100){%>
         <h2>Rating: <%=movie.rating%>%⭐️⭐️⭐️⭐️⭐️🤩</h2>
-    <%}if (movie.rating >= 90){%>
+    <%}else if (movie.rating >= 90){%>
         <h2>Rating: <%=movie.rating%>%⭐️⭐️⭐️⭐️</h2>
     <%}else if(movie.rating >=75){%>
         <h2>Rating: <%=movie.rating%>%⭐️⭐️⭐️</h2>
-    <%}else if (movie.rating <=50){%>
+    <%}else if (movie.rating >=50){%>
         <h2>Rating: <%=movie.rating%>%⭐️⭐️</h2>
     <%}else{%>
         <h2>Rating: <%=movie.rating%>%💩</h2>

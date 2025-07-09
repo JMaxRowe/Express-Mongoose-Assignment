@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Special Elite";
+    margin: 2rem;
+    background-color: #b0d6fc;
+
+    color: #333;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+a {
+    text-decoration: underline;
+    color: #0b2535;
+}
+
+span {
+    font-size: 1.2rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.navbar{
+    display:flex;
+    flex-direction: row;
+    gap: 10px;
+
+}

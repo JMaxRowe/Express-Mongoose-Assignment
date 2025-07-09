@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+
     <title>Movie Diary</title>
 </head>
 <body>
@@ -22,7 +27,7 @@
                 <span>⭐️⭐️⭐️⭐️</span>
             <% } else if (movie.rating >= 75) { %>
                 <span>⭐️⭐️⭐️</span>
-            <% } else if (movie.rating <= 50) { %>
+            <% } else if (movie.rating >= 50) { %>
                 <span>⭐️⭐️</span>
             <% } else { %>
                 <span>💩</span>

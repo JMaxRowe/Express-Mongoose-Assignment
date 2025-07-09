@@ -8,6 +8,7 @@ const port = process.env.PORT
 
 app.use(express.urlencoded())
 app.use(morgan('dev'))
+app.use(express.static('public'));
 
 const movieSchema = new mongoose.Schema({
     title:{type: String, required: true},
