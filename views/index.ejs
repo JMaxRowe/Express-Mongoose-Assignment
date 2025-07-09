@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Diary</title>
 </head>
 <body>
-    <%- include('../partials/nav.ejs')%>
-    
+    <%- include('../partials/nav.ejs') %>
+
     <h1>Movie Diary:</h1>
+
+    <ul>
+        <% allMovies.forEach(movie => { %>
+        <li>
+            <a href="/movies/<%= movie._id %>">
+            <%= movie.title %>
+
+            <% if (movie.rating === 100) { %>
+                <span>⭐️⭐️⭐️⭐️⭐️🤩</span>
+            <% } else if (movie.rating >= 90) { %>
+                <span>⭐️⭐️⭐️⭐️</span>
+            <% } else if (movie.rating >= 75) { %>
+                <span>⭐️⭐️⭐️</span>
+            <% } else if (movie.rating <= 50) { %>
+                <span>⭐️⭐️</span>
+            <% } else { %>
+                <span>💩</span>
+            <% } %>
+
+            </a>
+        </li>
+        <% }) %>
+    </ul>
 </body>
 </html>

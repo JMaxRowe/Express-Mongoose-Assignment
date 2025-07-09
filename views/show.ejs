@@ -8,6 +8,20 @@
 <body>
     <%- include('../partials/nav.ejs')%>
     
-    <h1><%= movie.title%></h1>
+    <h1><%= movie.title%> - <%=movie.releaseYear%></h1>
+    <h2>Director: <%=movie.director%></h2>
+    <h2>Genre: <%=movie.genre%></h2>
+    <%if(movie.rating === 100){%>
+        <h2>Rating: <%=movie.rating%>%⭐️⭐️⭐️⭐️⭐️🤩</h2>
+    <%}if (movie.rating >= 90){%>
+        <h2>Rating: <%=movie.rating%>%⭐️⭐️⭐️⭐️</h2>
+    <%}else if(movie.rating >=75){%>
+        <h2>Rating: <%=movie.rating%>%⭐️⭐️⭐️</h2>
+    <%}else if (movie.rating <=50){%>
+        <h2>Rating: <%=movie.rating%>%⭐️⭐️</h2>
+    <%}else{%>
+        <h2>Rating: <%=movie.rating%>%💩</h2>
+    <%}%>
+    
 </body>
 </html>
