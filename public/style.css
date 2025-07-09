@@ -40,3 +40,17 @@ li {
     gap: 10px;
 
 }
+form{
+    display:flex;
+    flex-direction: column;
+    gap: 7px;
+}
+input{
+    background-color: #c1d3e6;
+    color: #01014a;
+}
+
+input::placeholder{
+    color:#1e1d3da9
+    
+}
