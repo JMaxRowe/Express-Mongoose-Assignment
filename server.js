@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import morgan from 'morgan'
 import 'dotenv/config'
 
 const app = express()
@@ -30,16 +31,17 @@ app.get('/movies/new', (req,res) =>{
 app.get('/movies/:movieId', async (req,res) =>{
     const {movieId} = req.params
     const movie = await Movie.findById(movieId)
-    return res.render('show.ejs', {book})
+    return res.render('show.ejs', {movie})
 })
 
 
 
 app.post('/movies', async (req, res) =>{
     try{
-        const newMovie = await Movie.create (req.body)
+        const newMovie = await Movie.create(req.body)
+        return res.redirect(`/movies/${newMovie._id}`)
     }catch(e){
-        res.status(400)
+        console.log('error')
     }
 })
 
@@ -49,13 +51,8 @@ app.post('/movies', async (req, res) =>{
 const connect = async() =>{
     await mongoose.connect(process.env.MONGODB_URI)
     console.log('connected to MongoDB')
-
-    await runqueries()
-
-    await mongoose.disconnect()
-
-    process.exit()
 }
+connect()
 
 
 
