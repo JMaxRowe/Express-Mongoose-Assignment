@@ -14,7 +14,7 @@ const movieSchema = new mongoose.Schema({
     director: String,
     releaseYear: Number,
     genre: String,
-    rating: {type: Number, min:0, max: 10}
+    rating: {type: Number, min:0, max: 100}
 })
 
 const Movie = mongoose.model('Movie', movieSchema)
@@ -41,7 +41,8 @@ app.post('/movies', async (req, res) =>{
         const newMovie = await Movie.create(req.body)
         return res.redirect(`/movies/${newMovie._id}`)
     }catch(e){
-        console.log('error')
+        console.error('❌ Error creating movie:', e); // Show real reason in terminal
+        res.status(500).send('Server error');
     }
 })
 
