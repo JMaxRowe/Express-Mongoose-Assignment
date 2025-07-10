@@ -27,6 +27,13 @@
     <%}else{%>
         <h2>Rating: <%=movie.rating%>%💩</h2>
     <%}%>
+
+    <section class="controls">
+        <a href="/movies/<%= movie._id%>/edit">Edit movie details</a><br>
+        <form action="/movies/<%=movie._id%>?_method=DELETE" method="POST">
+            <button type="submit">delete movie</button>
+        </form>
+    </section>
     
 </body>
 </html>

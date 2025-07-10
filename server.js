@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import morgan from 'morgan'
 import 'dotenv/config'
+import methodOverride from 'method-override'
 
 const app = express()
 const port = process.env.PORT
@@ -9,6 +10,7 @@ const port = process.env.PORT
 app.use(express.urlencoded())
 app.use(morgan('dev'))
 app.use(express.static('public'));
+app.use(methodOverride('_method'))
 
 const movieSchema = new mongoose.Schema({
     title:{type: String, required: true},
@@ -35,6 +37,22 @@ app.get('/movies/:movieId', async (req,res) =>{
     return res.render('show.ejs', {movie})
 })
 
+app.get('/movies/:movieId/edit', async (req,res)=>{
+    const{movieId} = req.params
+    const movie = await Movie.findById(movieId)
+    return res.render('edit.ejs', {movie})
+})
+
+app.put('/movies/:movieId', async (req, res)=>{
+    try {
+        const {movieId} = req.params
+        await Movie.findByIdAndUpdate(movieId, req.body)
+        return `/movies/${movieId}`
+    } catch (error) {
+        console.log("update error")
+    }
+})
+
 
 
 app.post('/movies', async (req, res) =>{
@@ -42,9 +60,19 @@ app.post('/movies', async (req, res) =>{
         const newMovie = await Movie.create(req.body)
         return res.redirect(`/movies/${newMovie._id}`)
     }catch(e){
-        console.error('❌ Error creating movie:', e); // Show real reason in terminal
+        console.error('❌ Error creating movie:', e);
         res.status(500).send('Server error');
     }
+})
+
+app.delete('/movies/:movieId', async (req,res)=>{
+try {
+    const deletedMovie = await Movie.findByIdAndDelete(req.params.movieId)
+    console.log(`Deleted ${deletedMovie.title}`)
+    return res.redirect('/movies')
+} catch (error) {
+    console.log("delete error")
+}
 })
 
 
